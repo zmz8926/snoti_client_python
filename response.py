@@ -1,7 +1,9 @@
 #! python3
 # -*- coding: utf-8 -*-
 import json
-from .settings import LOGGING_CONFIG
+import sys
+sys.path.append(".")
+from settings import LOGGING_CONFIG
 
 # logging
 import logging

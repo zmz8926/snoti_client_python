@@ -4,6 +4,7 @@ import socket
 import ssl
 import threading
 from time import sleep
+
 if __name__ == '__main__':
     import response
     from request import Request, LoginReq, AckReq, ControlReq
@@ -31,7 +32,9 @@ class Client:
                       'device.status.kv',
                       'datapoints.changed',
                       'center_control.sub_device_added',
-                      'center_control.sub_device_deleted']
+                      'center_control.sub_device_deleted',
+                      'device.lbs.kv',
+                      'device.gps.kv']
     DEFAULT_SUBKEY = 'default'
     HEAERBEAT_TIME = 120
     MAX_MISS_PONG = 2    # 客户端在第MAX_MISS_PONG+1次发送心跳前，都没有收到过服务器消息，则判定为连接断开
@@ -204,13 +207,15 @@ class Client:
 
 if __name__ == '__main__':
     import callback
-    client = Client("c74fd6e832eb42de80540d7d738fe025", "9UDAyB8pQY6w2HSewJmwvw", "r5A9PhsYQIGhJ03SSOsIqQ", subkey="sandbox_000")
+    # client = Client("c74fd6e832eb42de80540d7d738fe025", "9UDAyB8pQY6w2HSewJmwvw", "r5A9PhsYQIGhJ03SSOsIqQ", subkey="sandbox_000")
+    client = Client("a5c353f5e2764a969122f811c8150e84", "EnZ67HfvTEGP+OdUiiYAag", "fy5J7nFbQ1uGw2GFMEExFA", subkey="sandbox_000")
     client.connect()
-    sleep(20)
-    client.control_kv("8Namn3NCUNFRbuFiZ9NRaF", "virtual:site", {"binary":[0,1,255,0,0]})
+    sleep(10)
+    client._ping()
+    # client.control_kv("aeoKZ9nh", "virtual:site", {"binary":[0,1,255,0,0]})
     # sleep(60)
     # client.control_raw("8Namn3NCUNFRbuFiZ9NRaF", "virtual:site", "02")
     # sleep(60)
-    sleep(500)
+    # sleep(500)
 
 

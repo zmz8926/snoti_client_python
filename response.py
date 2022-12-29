@@ -35,7 +35,9 @@ class Response:
             'device_status_raw': EventDevRaw,
             'device_status_kv': EventDevKv,
             'sub_device_added': EventSubDevAdd,
-            'sub_device_deleted': EventSubDevDel
+            'sub_device_deleted': EventSubDevDel,
+            'device_lbs_kv': EventDevLbsKv,
+            'device_gps_kv': EventDevGpsKv
         }
 
     def handle(self, callback):
@@ -121,13 +123,22 @@ class EventDevKv(EventPush):
         return "ack", self.delivery_id
 
 class EventSubDevAdd(EventPush):
-    def handle(self, *args):
+    def handle(self, callback):
         self.run_callback(callback, 'event_sub_dev_added', self.resp_data)
         return "ack", self.delivery_id
 
 class EventSubDevDel(EventPush):
-    def handle(self, *args):
+    def handle(self, callback):
         self.run_callback(callback, 'event_sub_dev_deleted', self.resp_data)
+        return "ack", self.delivery_id
+    
+class EventDevLbsKv(EventPush):
+    def handle(self, callback):
+        self.run_callback(callback, 'event_Dev_Lbs_Kv', self.resp_data)
+        return "ack", self.delivery_id
+class EventDevGpsKv(EventPush):
+    def handle(self, callback):
+        self.run_callback(callback, 'event_Dev_Gps_Kv', self.resp_data)
         return "ack", self.delivery_id
 
 if __name__ == '__main__':

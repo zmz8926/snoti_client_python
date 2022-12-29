@@ -2,6 +2,12 @@
 # -*- coding: utf-8 -*-
 import json
 
+
+def event_Dev_Lbs_Kv(data):
+    print(data)
+
+def event_Dev_Gps_Kv(data):
+    print(data)
 '''
 data = {
     "error_code": <int>
@@ -100,6 +106,7 @@ data = {
 '''
 def event_sub_dev_deleted(data):
     pass
+
 
 
 if __name__ == '__main__':

@@ -210,8 +210,9 @@ if __name__ == '__main__':
     # client = Client("c74fd6e832eb42de80540d7d738fe025", "9UDAyB8pQY6w2HSewJmwvw", "r5A9PhsYQIGhJ03SSOsIqQ", subkey="sandbox_000")
     client = Client("a5c353f5e2764a969122f811c8150e84", "EnZ67HfvTEGP+OdUiiYAag", "fy5J7nFbQ1uGw2GFMEExFA", subkey="sandbox_000")
     client.connect()
-    sleep(10)
-    client._ping()
+    while(1):
+        sleep(20)
+        client._ping()
     # client.control_kv("aeoKZ9nh", "virtual:site", {"binary":[0,1,255,0,0]})
     # sleep(60)
     # client.control_raw("8Namn3NCUNFRbuFiZ9NRaF", "virtual:site", "02")

@@ -14,7 +14,7 @@ logger = logging.getLogger('client')
 
 class Response:
     def __init__(self, data):
-        self.resp_data = json.loads(data, encoding='utf-8')
+        self.resp_data = json.loads(data)
         self._create_handler()
 
     # 新增的事件通知，需要加到如下字典中，并对应实现一个子类
